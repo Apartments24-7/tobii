@@ -27,7 +27,7 @@ class ImageType {
     }
 
     IMAGE.setAttribute('src', '')
-    IMAGE.setAttribute('data-src', el.href)
+    IMAGE.setAttribute('data-src', el.getAttribute('data-photo') || el.href )
 
     if (el.hasAttribute('data-srcset')) {
       IMAGE.setAttribute('data-srcset', el.getAttribute('data-srcset'))
