@@ -822,15 +822,15 @@ export default function Tobii (userOptions) {
       closeButton.focus()
     }
     // If there is a focusable figure element, and we are not displaying the first slide.
-    if (groups[activeGroup].elementsLength > 1 && groups[activeGroup].currentIndex !== 0) {
-      const FOCUSABLE_FIGURE = getFocusableFigure()
-      if (FOCUSABLE_FIGURE) {
-        // The small delay is required to avoid an annoying display bug.
-        setTimeout(() => {
-          FOCUSABLE_FIGURE.focus()
-        }, 100)
-      }
-    }
+    // if (groups[activeGroup].elementsLength > 1 && groups[activeGroup].currentIndex !== 0) {
+    //   const FOCUSABLE_FIGURE = getFocusableFigure()
+    //   if (FOCUSABLE_FIGURE) {
+    //     // The small delay is required to avoid an annoying display bug.
+    //     setTimeout(() => {
+    //       FOCUSABLE_FIGURE.focus()
+    //     }, 100)
+    //   }
+    // }
   }
 
   /**
