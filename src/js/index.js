@@ -161,7 +161,7 @@ export default function Tobii (userOptions) {
     const uniqueMap = []
     LIGHTBOX_TRIGGER_ELS.forEach((lightboxTriggerEl) => {
       const group = lightboxTriggerEl.hasAttribute('data-group') ? lightboxTriggerEl.getAttribute('data-group') : 'default'
-      let uid = lightboxTriggerEl.href
+      let uid = lightboxTriggerEl.dataset.photo || lightboxTriggerEl.href
       if (lightboxTriggerEl.hasAttribute('data-target')) {
         uid = lightboxTriggerEl.getAttribute('data-target')
       }
@@ -822,15 +822,15 @@ export default function Tobii (userOptions) {
       closeButton.focus()
     }
     // If there is a focusable figure element, and we are not displaying the first slide.
-    if (groups[activeGroup].elementsLength > 1 && groups[activeGroup].currentIndex !== 0) {
-      const FOCUSABLE_FIGURE = getFocusableFigure()
-      if (FOCUSABLE_FIGURE) {
-        // The small delay is required to avoid an annoying display bug.
-        setTimeout(() => {
-          FOCUSABLE_FIGURE.focus()
-        }, 100)
-      }
-    }
+    // if (groups[activeGroup].elementsLength > 1 && groups[activeGroup].currentIndex !== 0) {
+    //   const FOCUSABLE_FIGURE = getFocusableFigure()
+    //   if (FOCUSABLE_FIGURE) {
+    //     // The small delay is required to avoid an annoying display bug.
+    //     setTimeout(() => {
+    //       FOCUSABLE_FIGURE.focus()
+    //     }, 100)
+    //   }
+    // }
   }
 
   /**
