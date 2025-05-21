@@ -269,7 +269,7 @@ export default function Tobii (userOptions) {
 
         TOBII_ZOOM.className = 'tobii-zoom__icon';
         TOBII_ZOOM.setAttribute('aria-label', 'View in image gallery');
-        TOBII_ZOOM.setAttribute('aria-describedby', el.id);
+        TOBII_ZOOM.setAttribute('aria-describedby', el.dataset.photoId);
         TOBII_ZOOM.setAttribute('aria-haspopup', 'dialog');        
         TOBII_ZOOM.innerHTML = userSettings.zoomText
 
