@@ -265,9 +265,12 @@ export default function Tobii (userOptions) {
       // Set zoom icon if necessary
       if ((userSettings.zoom && el.querySelector('img') && el.getAttribute('data-zoom') !== 'false') ||
         el.getAttribute('data-zoom') === 'true') {
-        const TOBII_ZOOM = document.createElement('div')
+        const TOBII_ZOOM = document.createElement('button')
 
-        TOBII_ZOOM.className = 'tobii-zoom__icon'
+        TOBII_ZOOM.className = 'tobii-zoom__icon';
+        TOBII_ZOOM.setAttribute('aria-label', 'View in image gallery');
+        TOBII_ZOOM.setAttribute('aria-describedby', el.id);
+        TOBII_ZOOM.setAttribute('aria-haspopup', 'dialog');        
         TOBII_ZOOM.innerHTML = userSettings.zoomText
 
         el.classList.add('tobii-zoom')
