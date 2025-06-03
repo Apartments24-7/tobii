@@ -1,9 +1,9 @@
 class IframeType {
-  constructor () {
+  constructor() {
     this.userSettings = null
   }
 
-  init (el, container, userSettings) {
+  init(el, container, userSettings) {
     this.userSettings = userSettings
 
     const HREF = el.hasAttribute('data-target') ? el.getAttribute('data-target') : el.getAttribute('href')
@@ -18,6 +18,9 @@ class IframeType {
     if (el.hasAttribute('data-height')) {
       container.setAttribute('data-height', `${el.getAttribute('data-height')}`)
     }
+    if (el.hasAttribute('data-caption')) {
+      container.setAttribute('data-caption', `${el.getAttribute('data-caption')}`)
+    }
 
     // dont create empty iframes here - very slow
 
@@ -26,11 +29,11 @@ class IframeType {
     container.classList.add('tobii-iframe')
   }
 
-  onPreload (container) {
+  onPreload(container) {
     // Nothing
   }
 
-  onLoad (container) {
+  onLoad(container) {
     let IFRAME = container.querySelector('iframe')
 
     // Create loading indicator
@@ -73,6 +76,14 @@ class IframeType {
       // Add iframe to container
       container.appendChild(IFRAME)
 
+      // Add caption if provided
+      if (container.hasAttribute('data-caption')) {
+        let IFrameCaption = document.createElement('p');
+        IFrameCaption.classList.add('caption');
+        IFrameCaption.textContent = container.getAttribute('data-caption');
+        container.appendChild(IFrameCaption);
+      }
+
       IFRAME.addEventListener('load', () => {
         IFRAME.style.opacity = '1'
         const LOADING_INDICATOR = container.querySelector('.tobii__loader')
@@ -93,17 +104,17 @@ class IframeType {
     }
   }
 
-  onLeave (container) {
+  onLeave(container) {
     // Nothing
   }
 
-  onCleanup (container) {
+  onCleanup(container) {
     const IFRAME = container.querySelector('iframe')
     IFRAME.setAttribute('src', '')
     IFRAME.style.opacity = '0'
   }
 
-  onReset () {
+  onReset() {
     // Nothing
   }
 }
